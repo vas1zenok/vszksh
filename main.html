@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .data-box {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <div class="data-box">
+        <p id="dynamic-text">Loading data...</p>
+    </div>
 
+    <script>
+        // Получаем параметры из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name') || 'Guest';
+        const age = urlParams.get('age') || 'unknown';
+
+        // Меняем текст на странице
+        document.getElementById('dynamic-text').innerHTML = `
+            Hello, <strong>${name}</strong>!<br>
+            Your age is <strong>${age}</strong>.
+        `;
+    </script>
+
+    <p>Try these links:</p>
+    <a href="?name=Alex&age=30">Show Alex, 30</a><br>
+    <a href="?name=Anna&age=25">Show Anna, 25</a><br>
+    <a href="?name=User123">Show User123 (no age)</a>
+</body>
+</html>
